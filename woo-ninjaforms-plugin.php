@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     Woo Ninjaforms Plugin
- * Plugin URI:      https://github.com/Auralcat/woo-ninjaforms-plugin
+ * Plugin URI:      https://github.com/Auralcat/woo-ninjaforms-plugin/
  * Description:     Show WooCommerce orders with NinjaForms submissions
  * Author:          Miriam Retka
  * Author URI:      miriamretka.com
@@ -13,3 +13,11 @@
  */
 
 // Your code starts here.
+// Kill plugin if abspath is not defined
+defined ( 'ABSPATH' ) or die( 'Hey, what are you doing here?' );
+
+if ( ! function_exists( 'add_action' ) ) {
+	// Wordpress wasn't initialized properly
+	echo "Hey, you can't access this file!";
+	exit;
+}
