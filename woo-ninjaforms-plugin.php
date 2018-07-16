@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     Woo Ninjaforms Plugin
- * Plugin URI:      PLUGIN SITE HERE
+ * Plugin URI:      https://github.com/Auralcat/woo-ninjaforms-plugin
  * Description:     Show WooCommerce orders with NinjaForms submissions
  * Author:          Miriam Retka
  * Author URI:      miriamretka.com
