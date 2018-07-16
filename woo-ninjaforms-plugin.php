@@ -21,3 +21,15 @@ if ( ! function_exists( 'add_action' ) ) {
 	echo "Hey, you can't access this file!";
 	exit;
 }
+
+class WooNinjaformsPlugin
+{
+	function __construct($string) {
+
+	}
+}
+
+// Initialize class only if it exists
+if ( class_exists ( 'WooNinjaformsPlugin' ) ) {
+	$wooNinjaFormsPlugin = new WooNinjaformsPlugin();
+}
