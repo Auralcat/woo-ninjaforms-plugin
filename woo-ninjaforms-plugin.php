@@ -31,14 +31,16 @@ class WooNinjaformsPlugin
 	function activate()
 	{
 		// Generated a Custom Post Type
+		$this->custom_post_type();
 
 		// Flush rewrite rules
-		flush_rewrite_rules( true );
+		flush_rewrite_rules();
 	}
 
 	function deactivate()
 	{
 		// Flush rewrite rules
+		flush_rewrite_rules();
 	}
 
 	function uninstall()
@@ -68,3 +70,4 @@ if ( class_exists ( 'WooNinjaformsPlugin' ) ) {
 // register_activation_hook( __FILE__, array( $wooNinjaFormsPlugin, 'deactivate' ) );
 
 // // Uninstall hook
+// register_uninstall_hook( __FILE__, array( $wooNinjaFormsPlugin, 'uninstall' ))
