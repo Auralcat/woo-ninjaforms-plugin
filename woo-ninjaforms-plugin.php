@@ -25,13 +25,15 @@ if ( ! function_exists( 'add_action' ) ) {
 class WooNinjaformsPlugin
 {
 	function __construct() {
-		add_action( 'init', array( $this, 'custom_post_type' ) );
+		add_action( 'admin_menu', array( $this, 'activate' ) );
 	}
 
 	function activate()
 	{
-		// Generated a Custom Post Type
-		$this->custom_post_type();
+		// Create menu page
+		add_menu_page( 'Inscrições no Evento', 'Inscrições no Evento',
+					   'manage_options', 'inscricoes-evento',
+					   'test_init');
 
 		// Flush rewrite rules
 		flush_rewrite_rules();
@@ -49,6 +51,10 @@ class WooNinjaformsPlugin
 		// Delete all the plugin data from the DB
 	}
 
+	function test_init()
+	{
+		echo "<h1>Hello World!</h1>";
+	}
 	// Custom methods go here.
 	function custom_post_type()
 	{
