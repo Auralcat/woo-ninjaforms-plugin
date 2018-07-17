@@ -22,7 +22,7 @@ if ( ! function_exists( 'add_action' ) ) {
 	exit;
 }
 
-class WooNinjaformsPlugin
+final class WooNinjaformsPlugin
 {
 	function __construct() {
 		// Prime the action
@@ -34,7 +34,8 @@ class WooNinjaformsPlugin
 		// Create menu page
 		add_menu_page( 'Inscrições no Evento', 'Inscrições no Evento',
 					   'manage_options', 'inscricoes-evento',
-						array( $this, 'test_init' ));
+						array( $this, 'main' ));
+		add_action( 'admin_notice', 'This is a test notice!' );
 
 		// Flush rewrite rules
 		flush_rewrite_rules();
@@ -52,15 +53,11 @@ class WooNinjaformsPlugin
 		// Delete all the plugin data from the DB
 	}
 
-	function test_init()
+	// You'll need to write the HTML of the page here.
+	function main()
 	{
 		echo "<h1>Esta é a página do meu plugin</h1>";
-	}
-
-	// Custom methods go here.
-	function custom_post_type()
-	{
-		register_post_type( 'example_book', ['public' => true, 'label' => 'Example Book Post']);
+		echo "<p>Some content goes here.</p>";
 	}
 }
 
@@ -68,14 +65,3 @@ class WooNinjaformsPlugin
 if ( class_exists ( 'WooNinjaformsPlugin' ) ) {
 	$wooNinjaFormsPlugin = new WooNinjaformsPlugin();
 }
-
-// // Activation
-// register_activation_hook( __FILE__, array( $wooNinjaFormsPlugin, 'activate' ) );
-
-// add_action( 'init', 'function_name');
-
-// // Deactivation hook
-// register_activation_hook( __FILE__, array( $wooNinjaFormsPlugin, 'deactivate' ) );
-
-// // Uninstall hook
-// register_uninstall_hook( __FILE__, array( $wooNinjaFormsPlugin, 'uninstall' ))
