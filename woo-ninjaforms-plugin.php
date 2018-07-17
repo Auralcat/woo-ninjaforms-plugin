@@ -24,8 +24,33 @@ if ( ! function_exists( 'add_action' ) ) {
 
 class WooNinjaformsPlugin
 {
-	function __construct($string) {
+	function __construct() {
+		add_action( 'init', array( $this, 'custom_post_type' ) );
+	}
 
+	function activate()
+	{
+		// Generated a Custom Post Type
+
+		// Flush rewrite rules
+		flush_rewrite_rules( true );
+	}
+
+	function deactivate()
+	{
+		// Flush rewrite rules
+	}
+
+	function uninstall()
+	{
+		// Delete Custom Post Type
+		// Delete all the plugin data from the DB
+	}
+
+	// Custom methods go here.
+	function custom_post_type()
+	{
+		register_post_type( 'example_book', ['public' => true, 'label' => 'Example Book Post']);
 	}
 }
 
@@ -33,3 +58,13 @@ class WooNinjaformsPlugin
 if ( class_exists ( 'WooNinjaformsPlugin' ) ) {
 	$wooNinjaFormsPlugin = new WooNinjaformsPlugin();
 }
+
+// // Activation
+// register_activation_hook( __FILE__, array( $wooNinjaFormsPlugin, 'activate' ) );
+
+// add_action( 'init', 'function_name');
+
+// // Deactivation hook
+// register_activation_hook( __FILE__, array( $wooNinjaFormsPlugin, 'deactivate' ) );
+
+// // Uninstall hook
